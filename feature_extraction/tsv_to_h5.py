@@ -60,9 +60,9 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--tsv_path', type=str,
-                        default='../datasets/COCO/features/val2014_obj36.tsv')
+                        default='../datasets/COCO/features/train2014_obj36.tsv')
     parser.add_argument('--h5_path', type=str,
-                        default='../datasets/COCO/features/val2014_obj36.h5')
+                        default='../datasets/COCO/features/train2014_obj36.h5')
 
     args = parser.parse_args()
     dim = 2048

@@ -11,6 +11,8 @@ question_type = "what is the image caption"
 ans2label = {}
 label2ans = []
 
+img_id = 0
+
 for i in range(3):
     data = []
 
@@ -41,12 +43,11 @@ for i in range(3):
             else:
                 NEW_SPLIT = 'COCO_train2014_'
 
-            img_id = NEW_SPLIT + filepath.replace('/', '_')
             label = row[2].replace('""', '')
 
             dict = {
                 "answer_type": answer_type,
-                "img_id": img_id,
+                "img_id": NEW_SPLIT + str(img_id),
                 "question_id": question_id,
                 "question_type": question_type,
                 "sent": sent,
@@ -74,7 +75,9 @@ for i in range(3):
             shutil.copy(src, dst)
 
             file_name = row[1][row[1].rfind('/')+1:]
-            os.renames(f'{dst}/{file_name}', f'{dst}/{img_id}{file_name[1:]}')
+            os.renames(f'{dst}/{file_name}', f'{dst}/{NEW_SPLIT}{img_id}{file_name[1:]}')
+
+            img_id += 1
 
     if SPLIT == 'dev':
         SPLIT = 'val'
@@ -88,5 +91,5 @@ for i in range(3):
         NEW_SPLIT = 'train2014'
     json.dump({"info": {"description": "This is v2.0 of the VQA dataset.", "url": "http://visualqa.org", "version": "2.0", "year": 2017, "contributor": "VQA Team", "date_created": "2017-04-26 17:00:44"}, "license": {"url": "http://creativecommons.org/licenses/by/4.0/", "name": "Creative Commons Attribution 4.0 International License"}, "data_subtype": NEW_SPLIT,"annotations": data}, open(f'v2_mscoco_{NEW_SPLIT}_annotations.json', 'w'), indent=6)
 
-json.dump(ans2label, open('trainval_ans2label.json', 'w'), indent = 6)
-json.dump(label2ans, open('trainval_label2ans.json', 'w'), indent = 6)
+json.dump(ans2label, open('trainval_ans2label.json', 'w'), indent = 4)
+json.dump(label2ans, open('trainval_label2ans.json', 'w'), indent = 4)

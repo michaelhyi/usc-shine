@@ -1,0 +1,1 @@
+srun --gres=gpu:6000:1 --nodelist ink-titan python tsv_to_h5.py

@@ -1,0 +1,1 @@
+srun --gres=gpu:6000:1 --nodelist ink-titan --time 360 python vqa_prep.py

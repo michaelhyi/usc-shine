@@ -1,0 +1,1 @@
+srun --gres=gpu:8000:1 --nodelist ink-ruby --time 1440 python detectron2_mscoco_proposal_maxnms.py
