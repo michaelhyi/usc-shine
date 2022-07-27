@@ -7,6 +7,8 @@ View Research Poster [Here](https://drive.google.com/file/d/13Zldt4yikAtW-FKYZIL
 ## Dataset Preparation
 
 ```bash
+git clone https://github.com/soumyasanyal/iCommongen.git
+
 conda create -n icommongen python=3.6.9
 conda activate icommongen
 
